@@ -1,88 +1,126 @@
-# Conhecendo e instalando o Docker
+# 💾 Módulo: Armazenamento de Dados e Persistência
 
-## Modelo Cliente-Servidor
- - Baseado em requisições
- - Servidores
- - Diferentes tipos de requisições
- - Grande carga de serviços (DataCenter ou Cloud)
+Neste módulo, exploramos como o Docker lida com a persistência de dados. Por padrão, containers são **efêmeros** (tudo o que é criado dentro deles é perdido ao serem removidos). Para evitar a perda de dados críticos, utilizamos estratégias de armazenamento externo.
 
+---
 
- Solução para altos custos de servidores locais, surgiu a Cloud
+## 🏗️ 1. Tipos de Armazenamento (Mounts)
 
-# Cloud
+O Docker oferece três formas principais de persistir dados, cada uma com um caso de uso específico:
 
-- Virtualização
-- Microserviços (Abordagem arquitetônica e organuzacional do desenvolvimento no qua o software consiste em pequenos serviços independentes que se comunicam via API)
-- Abstração e escalabilidade
-- Surge a tecnologia dos containers
+### A. Bind Mounts
+Vincula um diretório ou arquivo específico da sua **máquina host** diretamente dentro do container.
+* **Vantagem:** Total controle sobre o caminho do arquivo.
+* **Uso comum:** Passar arquivos de configuração ou pastas de código-fonte para desenvolvimento em tempo real.
+* **Sintaxe:** `-v /caminho/no/host:/caminho/no/container`
 
-# Containers
+### B. Named Volumes (Volumes Nomeados)
+Gerenciados inteiramente pelo Docker em uma área reservada do sistema (`/var/lib/docker/volumes`).
+* **Vantagem:** Mais fácil de fazer backup e gerenciar via CLI do Docker. Recomendado para produção.
+* **Uso comum:** Bancos de dados e logs.
+* **Sintaxe:** `-v nome_do_volume:/caminho/no/container`
 
-- Containers são uma tecnologia usada para reunir um aplicativo e todos os seus arquivos necesários em um ambiente de tempo de tempo de execuçã. Como uma unidade, o caontaner pode ser afacilmetne movi oe executado em qualquer SO, em qualquer contexto.
+### C. Dockerfile Volumes
+Definidos dentro do arquivo de receita (`Dockerfile`) através da instrução `VOLUME`. Eles criam volumes anônimos caso nenhum nome seja especificado no `docker run`.
 
-## O que é o Docker?
+---
 
-- Com o docker, é possível lidar com os contaienrs como se fossem máquinas virutais e extremamente leves. Além disso, os containers oferecem maior flexibilidade para você criar, implmentar, copiar e migrar um contaienr de um ambiente para o outro.
-- Diferença de virtualização e containers
+## 🗄️ 2. Laboratório: Persistência com MySQL (Bind Mount)
 
-## Instalando o Docker (Ubuntu Server)
+Neste exemplo, garantimos que os dados do banco não sumam se o container for deletado.
 
-Como instalar o docker no Ubuntu
+```bash
+# 1. Criar a estrutura de pastas no Host
+mkdir -p /data/mysql-A
 
-Site: https://docs.docker.com/engine/install/ubuntu/
+# 2. Subir o container mapeando o volume
+# HOST: /data/mysql-A  |  CONTAINER: /var/lib/mysql
+docker run -d \
+  --name mysql-A \
+  -e MYSQL_ROOT_PASSWORD=Senha123 \
+  -p 3306:3306 \
+  --volume=/data/mysql-A:/var/lib/mysql \
+  mysql
 
-Script oferecido:
+# 3. Inspecionar para validar o mapeamento
+docker inspect mysql-A | grep -A 10 "Mounts"
+```
+> **Dica:** Se você deletar o container `mysql-A` e criar um novo apontando para `/data/mysql-A`, todos os seus bancos e tabelas estarão lá!
 
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-Executing docker install script, commit: 7cae5f8b0decc17d6571f9f52eb840fbc13b2737
-<...>
+---
 
+## 🌐 3. Laboratório: Servidor Web Estático (Apache)
 
-Seguir passo a passo oferecido no tutorial para a versão desejada e a forma desejada
+Usando Bind Mount para servir um site customizado.
 
------------------------------------------------------------
+```bash
+# 1. Preparar pasta e arquivo
+mkdir -p /data/apache-A
+cd /data/apache-A
 
-# Primeiros passos com docker
+# 2. Criar o index.html
+cat <<EOF > index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Apache OK</title>
+</head>
+<body>
+    <h1>Servidor Apache funcionando 🚀</h1>
+    <p>Se você está vendo esta página, o container está servindo corretamente via Bind Mount.</p>
+</body>
+</html>
+EOF
 
-## Download de Imagens
+# 3. Rodar o container Apache (httpd)
+docker run -d \
+  --name apache-A \
+  -p 80:80 \
+  --volume=/data/apache-A:/usr/local/apache2/htdocs \
+  httpd
+```
 
-- Acessar docker hub: https://hub.docker.com/
-- Procurar a imagem que deseja (Exemplo: Hello World)
-- Utilizar o comando par sua instalação:
-docker pull hello-world:nanoserver-ltsc2025
+---
 
-### Principais comandos:
-- Docker images (Listar imagens)
-- Docker run NOME-DA-IMAGEM (Inicializar a imagem)
-- Docker ps (Listar container em execução)
-- Docker ps -a (tag -a, serve para listar containers em execução e que já executaram e cessaram)
-- Docker run sleep 10 (explicar)
-- Docker stop ID or NAME DO CONTAINER (parar contaienr)
-- Docker run -it (explicar)
-- Velha e nova sintaxe (docker e docker container)
-- docker --help (ajuda)
-- docker run -d (rodar em background)
-- docker run -dti ubuntu
-- docker exec -it xxx /bin/bash (exemplo)
-- docker stop xxxx (parar contaienr)
-- docker rm xxxx (excluir container)
-- docker rmi (excluir imagem)
-- docker exec Ubuntu-A mkdir /destino(criando pasta em contaienr docker)
-- docker cp MeuArquivo.txt Ubuntu-A:/destino (enviando arquivo local para container)
-- docker cp Ubuntu-A:/destino/Meuzip.zip Zipcopia.zip (enviando arquivo do container para local)
-- docker stop NOME 
-- docker start NOME
-- docker inspect
+## 🐘 4. Laboratório: PHP + Apache (Site Dinâmico)
 
-### TAGS
+Para aplicações dinâmicas, utilizamos imagens que já possuem o runtime do PHP integrado ao Apache.
 
-- docker pull debian:9 (tag após o :,  com a versão desejada)
-  
-### Criando container do MySQL
+```bash
+# 1. Criar pasta
+mkdir -p /data/php-A
+cd /data/php-A
 
-- docker pull mysql
-- docker run -e MYSQL_ROOT_PASSWORD=Senha123 --name mysql-A -d -p 3306:3306 mysql (explicar todas as partes)
-- docker exec -it mysql-A bash
-- mysql -u root -p --protocol=tcp (ele vai pedir a password, e você vai colocar a senha)
+# 2. Criar o arquivo PHP
+cat <<EOF > index.php
+<?php
+echo "<h1>Apache + PHP funcionando</h1>";
+echo "<p>Data e hora do servidor: " . date("d/m/Y H:i:s") . "</p>";
+phpinfo();
+?>
+EOF
 
+# 3. Rodar o container
+docker run -d \
+  --name php-A \
+  -p 8080:80 \
+  --volume=/data/php-A:/var/www/html \
+  php:7.4-apache
+```
+
+---
+
+## 🧹 5. Gerenciamento de Volumes
+
+Comandos essenciais para manter o ambiente limpo:
+
+| Comando | Descrição |
+| :--- | :--- |
+| `docker volume create data_mysql` | Cria um volume nomeado manual. |
+| `docker volume ls` | Lista todos os volumes existentes. |
+| `docker volume rm <nome>` | Remove um volume específico. |
+| `docker volume prune` | Remove todos os volumes não utilizados. |
+
+---
+*Notas de aula: Azure Advanced - Módulo de Storage.*
