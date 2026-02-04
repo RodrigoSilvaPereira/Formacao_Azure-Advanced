@@ -10,11 +10,12 @@ O conteúdo está organizado de forma evolutiva, partindo dos conceitos de Cloud
 
 | Módulo | Descrição | Status |
 | :--- | :--- | :---: |
-| [**1. Cloud & Comandos**](./1-Cloud-Comandos/) | Fundamentos de Cloud, instalação no Ubuntu e comandos básicos de CLI. | ✅ |
-| [**2. Armazenamento**](./2-Armazenamento-Dados/) | Persistência com Bind Mounts e Named Volumes (Apache/MySQL). | ✅ |
-| [**3. Redes & Performance**](./3-Processamento-Logs-Redes/) | Limitação de recursos (CPU/RAM), logs, processos e isolamento de rede. | ✅ |
-| [**4. Dockerfile**](./4-Dockerfile/) | Criação de imagens, Multi-stage builds e Registry Privado. | ✅ |
-| [**5. Docker Compose**](./5-Docker-Compose/) | Orquestração de stacks multi-container (PHP + MySQL + phpMyAdmin). | ✅ |
+| [**1. Cloud & Comandos**](./1-Cloud-Comandos/) | Fundamentos de Cloud, instalação no Ubuntu e comandos básicos. | ✅ |
+| [**2. Armazenamento**](./2-Armazenamento-Dados/) | Persistência com Bind Mounts e Named Volumes. | ✅ |
+| [**3. Redes & Performance**](./3-Processamento-Logs-Redes/) | Recursos (CPU/RAM), logs e isolamento de rede. | ✅ |
+| [**4. Dockerfile**](./4-Dockerfile/) | Imagens, Multi-stage builds e Registry Privado. | ✅ |
+| [**5. Docker-Compose**](./5-Docker-Compose/) | Orquestração de stacks multi-container locais. | ✅ |
+| [**6. Cluster-Swarm**](./6-Cluster-Swarm) | Clusterização, Réplicas e Alta Disponibilidade na Azure. | ✅ |
 
 ---
 
