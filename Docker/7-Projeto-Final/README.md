@@ -1,9 +1,5 @@
 # Projeto Final — Cluster Docker Swarm na Azure com NFS e Nginx
 
-> **Observação importante**
-> Este README preserva **100% das anotações originais do projeto**, apenas corrigindo erros de digitação, comandos quebrados e adicionando explicações técnicas.
-> **Todas as máquinas possuem IP público**, conforme implementado no ambiente real.
-
 ---
 
 ## Visão Geral
