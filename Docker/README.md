@@ -16,6 +16,7 @@ O conteúdo está organizado de forma evolutiva, partindo dos conceitos de Cloud
 | [**4. Dockerfile**](./4-Dockerfile/) | Imagens, Multi-stage builds e Registry Privado. | ✅ |
 | [**5. Docker-Compose**](./5-Docker-Compose/) | Orquestração de stacks multi-container locais. | ✅ |
 | [**6. Cluster-Swarm**](./6-Cluster-Swarm) | Clusterização, Réplicas e Alta Disponibilidade na Azure. | ✅ |
+| [**7. Desafio Final**](./7-Projeto-Final) | Cluster Docker Swarm na Azure com NFS e Nginx. | ✅ |
 
 ---
 
@@ -31,9 +32,7 @@ O conteúdo está organizado de forma evolutiva, partindo dos conceitos de Cloud
 
 ## 🏆 Desafio Final
 
-*(Espaço reservado para a descrição do seu desafio prático)*
-
-> **Status:** ⏳ Aguardando anotações do desafio.
+> **Resultado:** Cluster Docker Swarm na Azure com NFS e Nginx.
 
 ---
 *Este repositório é parte do meu portfólio de especialização em Azure Advanced.*
