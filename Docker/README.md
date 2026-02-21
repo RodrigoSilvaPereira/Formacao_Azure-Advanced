@@ -31,9 +31,7 @@ O conteúdo está organizado de forma evolutiva, partindo dos conceitos de Cloud
 
 ## 🏆 Desafio Final
 
-*(Espaço reservado para a descrição do seu desafio prático)*
-
-> **Status:** ⏳ Aguardando anotações do desafio.
+> **Resultado:** Cluster Docker Swarm na Azure com NFS e Nginx.
 
 ---
 *Este repositório é parte do meu portfólio de especialização em Azure Advanced.*
