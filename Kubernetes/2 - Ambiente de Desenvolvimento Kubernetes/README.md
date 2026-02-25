@@ -141,18 +141,6 @@ minikube status
 
 ---
 
-## 🚀 Aplicação no Mundo Real
-
-Embora o Minikube seja apenas para desenvolvimento, os conceitos aplicados aqui são idênticos aos usados em:
-
-- AKS (Azure Kubernetes Service)
-- EKS (AWS)
-- GKE (Google Cloud)
-
-Aprender localmente significa estar preparado para ambientes produtivos.
-
----
-
 ## 📝 Notas Técnicas
 
 - Minikube cria um cluster de nó único (Single Node Cluster).
