@@ -396,4 +396,4 @@ Sistema funcionando ponta a ponta.
 ---
 
 # 📚 Anotações de Aula  
-Formação Azure Advanced — Kubernetes
+Formação Azure Advanced — Módulo Kubernetes
