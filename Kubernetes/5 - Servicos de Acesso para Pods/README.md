@@ -1,5 +1,5 @@
 
-# 🌐 Módulo 05: Serviços de Acesso para Kubernetes Pods
+# 🌐 Módulo: Serviços de Acesso para Kubernetes Pods
 
 Neste módulo vamos aprender:
 
