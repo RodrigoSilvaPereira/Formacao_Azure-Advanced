@@ -13,7 +13,7 @@ Neste módulo vamos aprender:
 Todos os códigos estão na pasta:
 
 ```bash
-/Codigos/Exemplo_2
+/Codigos/
 ```
 
 ---
