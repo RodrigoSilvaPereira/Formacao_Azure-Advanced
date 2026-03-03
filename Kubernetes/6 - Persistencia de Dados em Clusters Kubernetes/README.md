@@ -1,5 +1,4 @@
-# Azure
-# 💾 Módulo 06: Persistência de Dados em Cluster Kubernetes
+# 💾 Módulo: Persistência de Dados em Cluster Kubernetes
 
 Neste módulo vamos aprender:
 
