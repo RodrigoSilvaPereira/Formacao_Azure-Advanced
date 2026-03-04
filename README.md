@@ -1,45 +1,103 @@
-# Formação Azure Advanced – Docker, Kubernetes e Serverless
+# ☁️ Formação Azure Advanced
 
-Este repositório documenta meus estudos e práticas realizadas durante o bootcamp **Microsoft – Azure Advanced #2**, promovido pela **DIO (Digital Innovation One)** em parceria com a **Microsoft**.
+Este repositório consolida minha evolução prática em **Arquitetura Cloud Native na Azure**, estruturada em três pilares fundamentais da engenharia moderna:
 
-O foco da formação é o desenvolvimento de soluções **cloud-native**, utilizando **Docker**, **Kubernetes**, **arquiteturas Serverless na Azure** e conceitos modernos de **orquestração, escalabilidade e automação**, com aplicação prática em cenários reais.
+- 🐳 Containerização com Docker  
+- ☸️ Orquestração com Kubernetes  
+- ⚡ Arquitetura Serverless com Azure Functions  
 
----
-
-## 🎯 Objetivo da Formação
-
-Aprofundar conhecimentos em:
-- Contenerização de aplicações com **Docker**
-- Orquestração de containers com **Kubernetes**
-- Desenvolvimento de aplicações **Serverless na Microsoft Azure**
-- Boas práticas de arquitetura cloud-native
-- Preparação para certificações **Azure nível Associate**
-
-Todo o conteúdo aqui registrado serve como:
-- Material de estudo
-- Referência técnica
-- Evidência prática de aprendizado contínuo
-- Base para projetos reais e portfólio profissional
+A trilha foi construída de forma progressiva, saindo da infraestrutura básica até arquiteturas distribuídas, escaláveis e orientadas a eventos.
 
 ---
 
-## 🧱 Estrutura do Repositório
+## 🗺️ Estrutura do Repositório
 
-O repositório está organizado de acordo com os módulos principais do bootcamp:
+| Módulo | Foco | Descrição |
+| :--- | :--- | :--- |
+| [**🐳 Docker**](./Docker/) | Containerização | Criação, otimização e clusterização de containers com foco em performance, persistência e alta disponibilidade. |
+| [**☸️ Kubernetes**](./Kubernetes/) | Orquestração | Deploy, escalabilidade, persistência e CI/CD em cluster distribuído (GKE). |
+| [**⚡ Serverless**](./Serverless/) | Arquitetura Event-Driven | APIs com Azure Functions, API Management e integração com banco de dados em modelo pay-per-use. |
 
-```text
-Formacao_Azure-Advanced/
-│
-├── README.md                # Visão geral da formação
-│
-├── Docker/                  # Contenerização de aplicações
-│   ├── README.md            # Conceitos, comandos e exemplos
-│   └── exemplos/            # Dockerfiles, imagens e containers
-│
-├── Kubernetes/              # Orquestração e gerenciamento
-│   ├── README.md            # Conceitos, manifests e boas práticas
-│   └── manifests/           # Deployments, Services, ConfigMaps, etc
-│
-└── Serverless/              # Aplicações Serverless na Azure
-    ├── README.md            # Azure Functions, triggers e arquitetura
-    └── exemplos/            # Funções e projetos práticos
+---
+
+## 🐳 Docker — Base da Modernização
+
+Evolução de aplicações tradicionais para ambientes containerizados.
+
+**Consolidado:**
+- Docker Engine em Linux
+- Bind Mounts e Named Volumes
+- Controle de CPU/RAM
+- Multi-stage builds (<20MB)
+- Docker Compose
+- Cluster Docker Swarm na Azure
+- Alta disponibilidade com NFS + Nginx
+
+Transição arquitetural:
+
+    Aplicação Local → Container → Cluster Swarm
+
+---
+
+## ☸️ Kubernetes — Orquestração em Escala
+
+Evolução da containerização para orquestração completa em ambiente distribuído.
+
+**Consolidado:**
+- Pods, ReplicaSets e Deployments
+- Services (ClusterIP, NodePort, LoadBalancer)
+- PersistentVolume e PersistentVolumeClaim
+- StorageClass e NFS
+- Deploy em GKE
+- Pipeline CI/CD com atualização automática
+
+Transição arquitetural:
+
+    Container → Cluster → Cloud → Deploy Automatizado
+
+---
+
+## ⚡ Serverless — Arquitetura Orientada a Eventos
+
+Evolução do backend tradicional para modelo totalmente gerenciado pela nuvem.
+
+**Consolidado:**
+- Fundamentos do modelo Serverless
+- Azure Functions (HTTP Triggers)
+- CRUD completo com MongoDB
+- API Management (governança e segurança)
+- Escalabilidade automática (pay-per-use)
+- Arquitetura desacoplada por função
+
+Transição arquitetural:
+
+    Backend Monolítico → Funções Independentes → API Gerenciada → Cloud Native
+
+---
+
+## 🚀 Competências Consolidadas
+
+- Arquitetura Cloud Native
+- Microsserviços
+- Containers e Orquestração
+- Serverless Computing
+- Persistência em Ambientes Distribuídos
+- CI/CD
+- Infraestrutura como Código
+- Escalabilidade Horizontal
+- Alta Disponibilidade
+- Design de Sistemas Distribuídos
+
+---
+
+## 📈 Evolução Técnica Completa
+
+Este repositório representa a consolidação da jornada:
+
+    Infraestrutura → Containerização → Orquestração → Serverless
+
+Com foco real em arquitetura moderna, escalável e pronta para ambientes produtivos.
+
+---
+
+*Este repositório compõe meu portfólio de especialização em Azure Advanced e consolida minha evolução prática em Engenharia Cloud.*
